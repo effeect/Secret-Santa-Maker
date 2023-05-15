@@ -1,0 +1,12 @@
+{
+    "name": "Secret-Santa-Maker",
+    "description": "A node red implementation of doing secret santa",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flow.json",
+            "credentialsFile": "flow_cred.json"
+        }
+    }
+}
