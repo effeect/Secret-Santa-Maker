@@ -32,7 +32,7 @@
         "y": 100,
         "wires": [
             [
-                "5c4e3ac06aad8a30"
+                "083eb08c82fdeb2f"
             ]
         ]
     },
@@ -48,8 +48,27 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 300,
+        "x": 480,
         "y": 100,
         "wires": []
+    },
+    {
+        "id": "083eb08c82fdeb2f",
+        "type": "function",
+        "z": "40bc367db093e819",
+        "name": "Sort",
+        "func": "// https://daily-dev-tips.com/posts/public-solving-secret-santa-in-javascript/\n\nlet names = [\"Oliver\",\"Seb\",\"George\"];\n\nconst secretSantaNames = [...names].sort(() => 0.5 - Math.random())\n\nlet secretSanta = secretSantaNames.filter( (secretSantaName) => secretSantaName !== names)[0];\n\nsecretSantaNames.splice(\n    secretSantaNames.findIndex((i) => i === secretSanta),\n    1\n);\n\nlet acc = [];\n\nacc.push({\n    names,\n    secretSanta,\n});\n\nif (secretSanta === undefined) {\n    // Edge case where last person was assigned to their own name\n    // Simply swap with the first one.\n    secretSanta = acc[0].secretSanta;\n    acc[0].secretSanta = names[0];\n}\n\nnode.warn(acc)\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 1,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 100,
+        "wires": [
+            [
+                "5c4e3ac06aad8a30"
+            ]
+        ]
     }
 ]
